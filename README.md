@@ -1,46 +1,32 @@
-# Plateforme des cartes IBOMANSA
+# Tableau de bord IBOMANSA
 
-Plateforme web simple permettant d'afficher les cartes des membres après saisie d'un mot de passe.
+Plateforme de gestion visuelle des cartes membres.
 
-## Mot de passe initial
+## Fonctionnalités
+
+- Connexion par mot de passe
+- Détection automatique des cartes présentes dans GitHub
+- Bouton « Ajouter une carte »
+- Tableau de bord administrateur
+- Statistiques sur les cartes
+- Recherche par nom ou fichier
+- Affichage en grand et téléchargement
+- Design moderne aux couleurs d’IBOMANSA
+
+## Mot de passe
 
 `IBOMANSA2026`
 
-Pour le modifier :
+## Installation
 
-1. Choisissez le nouveau mot de passe.
-2. Générez son empreinte SHA-256.
-3. Remplacez la valeur `PASSWORD_HASH` dans `script.js`.
+Placez à la racine du dépôt :
 
-## Ajouter une nouvelle carte
+- `index.html`
+- `styles.css`
+- `script.js`
 
-1. Placez l'image dans le dossier `assets/`.
-2. Ajoutez le membre dans le tableau `members` situé au début de `script.js`.
+Les images des cartes peuvent également rester à la racine du dépôt.
 
-Exemple :
+## Ajouter une carte
 
-```js
-{
-  prenoms: "JEAN",
-  nom: "KOUASSI",
-  numero: "CI000000000",
-  matricule: "0001A",
-  village: "DALOA",
-  sousPrefecture: "DALOA",
-  image: "assets/carte-jean-kouassi.jpg"
-}
-```
-
-## Publication avec GitHub Pages
-
-Dans le dépôt GitHub :
-
-1. Ouvrez **Settings**.
-2. Allez dans **Pages**.
-3. Dans **Build and deployment**, choisissez **Deploy from a branch**.
-4. Sélectionnez la branche `main` et le dossier `/root`.
-5. Enregistrez.
-
-## Avertissement de sécurité
-
-GitHub Pages est un hébergement statique. Le contrôle par mot de passe de cette version protège seulement l'accès dans l'interface, mais les images restent techniquement accessibles à une personne connaissant leur adresse exacte. Pour une protection réellement privée, utilisez une authentification côté serveur, par exemple Supabase, Firebase ou Cloudflare Access.
+Depuis le tableau de bord, cliquez sur **Ajouter une carte**. GitHub s’ouvrira sur la page d’importation. Après validation du fichier, la nouvelle carte sera automatiquement détectée par la plateforme.

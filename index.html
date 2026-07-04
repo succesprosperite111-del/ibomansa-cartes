@@ -1,55 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex,nofollow" />
-  <title>IBOMANSA — Cartes des membres</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>IBOMANSA — Tableau de bord</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <section id="login-screen" class="login-screen">
-      <div class="login-card">
-        <div class="logo-mark">🌴</div>
-        <p class="eyebrow">COOPÉRATIVE IBOMANSA COOP-CA</p>
-        <h1>Espace sécurisé des cartes</h1>
-        <p class="subtitle">Entrez le mot de passe administrateur pour accéder aux cartes des membres.</p>
+  <section id="loginView" class="login-view">
+    <div class="login-card">
+      <div class="brand-logo">IB</div>
+      <p class="eyebrow">COOPÉRATIVE IBOMANSA COOP-CA</p>
+      <h1>Espace administrateur</h1>
+      <p class="muted">Accédez au tableau de bord sécurisé des cartes membres.</p>
 
-        <form id="login-form">
-          <label for="password">Mot de passe</label>
-          <div class="password-row">
-            <input id="password" type="password" autocomplete="current-password" required placeholder="Votre mot de passe" />
-            <button id="toggle-password" type="button" class="secondary" aria-label="Afficher le mot de passe">Afficher</button>
-          </div>
-          <button type="submit" class="primary">Accéder à la plateforme</button>
-          <p id="login-error" class="error" role="alert"></p>
-        </form>
+      <form id="loginForm">
+        <label for="password">Mot de passe</label>
+        <div class="password-wrap">
+          <input id="password" type="password" placeholder="Entrez le mot de passe" required>
+          <button id="togglePassword" type="button" class="ghost">Afficher</button>
+        </div>
+        <button type="submit" class="primary full">Se connecter</button>
+        <p id="loginError" class="error"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="dashboardView" class="dashboard hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo small">IB</div>
+        <div>
+          <strong>IBOMANSA</strong>
+          <span>COOP-CA</span>
+        </div>
       </div>
-    </section>
 
-    <section id="app-screen" class="app-screen hidden">
+      <nav>
+        <button class="nav-item active" data-view="overview">Tableau de bord</button>
+        <button class="nav-item" data-view="cards">Toutes les cartes</button>
+      </nav>
+
+      <button id="logoutButton" class="logout-button">Déconnexion</button>
+    </aside>
+
+    <main class="main-content">
       <header class="topbar">
         <div>
-          <p class="eyebrow">COOPÉRATIVE IBOMANSA COOP-CA</p>
-          <h2>Cartes des membres</h2>
+          <p class="eyebrow">ADMINISTRATION</p>
+          <h2 id="pageTitle">Tableau de bord</h2>
         </div>
-        <button id="logout-button" class="secondary">Déconnexion</button>
+        <a class="add-button" href="https://github.com/succesprosperite111-del/ibomansa-cartes/upload/main" target="_blank" rel="noopener">
+          + Ajouter une carte
+        </a>
       </header>
 
-      <section class="toolbar">
-        <input id="search-input" type="search" placeholder="Rechercher un membre, un matricule ou un village…" />
-        <span id="card-count" class="count"></span>
+      <section id="overviewPanel">
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span>Total des cartes</span>
+            <strong id="totalCards">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Format JPG</span>
+            <strong id="jpgCount">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Autres formats</span>
+            <strong id="otherCount">0</strong>
+          </article>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h3>Cartes récemment ajoutées</h3>
+              <p class="muted">Les dernières cartes détectées dans votre dépôt GitHub.</p>
+            </div>
+          </div>
+          <div id="recentCards" class="cards-grid"></div>
+        </div>
       </section>
 
-      <section id="cards-grid" class="cards-grid" aria-live="polite"></section>
-      <p id="empty-state" class="empty hidden">Aucune carte ne correspond à votre recherche.</p>
-    </section>
-  </main>
+      <section id="cardsPanel" class="hidden">
+        <div class="panel">
+          <div class="panel-head tools">
+            <div>
+              <h3>Toutes les cartes</h3>
+              <p class="muted">Recherche automatique par nom ou fichier.</p>
+            </div>
+            <div class="search-box">
+              <input id="searchInput" type="search" placeholder="Rechercher une carte...">
+              <span id="resultCount">0 résultat</span>
+            </div>
+          </div>
 
-  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Aperçu de la carte">
-    <button id="close-modal" class="modal-close" aria-label="Fermer">×</button>
-    <img id="modal-image" alt="Carte du membre en grand format" />
+          <p id="statusMessage" class="status">Chargement des cartes...</p>
+          <div id="allCards" class="cards-grid"></div>
+          <p id="emptyState" class="empty hidden">Aucune carte trouvée.</p>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <div id="modal" class="modal hidden">
+    <button id="closeModal" class="close-modal">×</button>
+    <img id="modalImage" alt="Carte membre en grand format">
   </div>
 
   <script src="script.js"></script>
