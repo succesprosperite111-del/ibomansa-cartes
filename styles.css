@@ -1,0 +1,245 @@
+* { box-sizing: border-box; }
+
+:root {
+  --green: #0d5b21;
+  --green-dark: #073c16;
+  --gold: #d7ad45;
+  --cream: #f6f4ec;
+  --text: #162018;
+  --muted: #687169;
+  --white: #ffffff;
+  --danger: #b3261e;
+  --shadow: 0 18px 55px rgba(5, 49, 18, .16);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(215,173,69,.18), transparent 32rem),
+    linear-gradient(135deg, #f7f8f4, #edf4ed);
+}
+
+button, input { font: inherit; }
+
+.hidden { display: none !important; }
+
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: min(100%, 470px);
+  background: rgba(255,255,255,.96);
+  border: 1px solid rgba(13,91,33,.12);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: 38px;
+}
+
+.logo-mark {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: var(--green);
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .11em;
+}
+
+h1, h2 { margin: 0; }
+
+h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.05; }
+h2 { font-size: clamp(24px, 4vw, 36px); }
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 18px 0 26px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.password-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #ccd5ce;
+  border-radius: 13px;
+  padding: 14px 15px;
+  outline: none;
+  background: white;
+}
+
+input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(13,91,33,.1);
+}
+
+button {
+  border: 0;
+  border-radius: 13px;
+  padding: 13px 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 14px;
+  color: white;
+  background: var(--green);
+}
+
+.primary:hover { background: var(--green-dark); }
+
+.secondary {
+  background: #edf4ee;
+  color: var(--green-dark);
+}
+
+.error {
+  min-height: 22px;
+  color: var(--danger);
+  margin: 12px 0 0;
+  font-weight: 700;
+}
+
+.app-screen {
+  width: min(1250px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 60px;
+}
+
+.topbar {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0 28px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.toolbar input { flex: 1; }
+
+.count {
+  white-space: nowrap;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 22px;
+}
+
+.member-card {
+  overflow: hidden;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.09);
+  border: 1px solid rgba(13,91,33,.1);
+}
+
+.member-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.59 / 1;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.card-meta {
+  padding: 17px 18px 19px;
+}
+
+.card-meta h3 {
+  margin: 0 0 6px;
+  color: var(--green-dark);
+}
+
+.card-meta p {
+  margin: 4px 0;
+  color: var(--muted);
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.card-actions button { flex: 1; }
+
+.empty {
+  text-align: center;
+  padding: 60px 15px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(0,0,0,.86);
+}
+
+.modal img {
+  max-width: min(1100px, 95vw);
+  max-height: 86vh;
+  border-radius: 16px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.5);
+}
+
+.modal-close {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  color: white;
+  background: rgba(255,255,255,.15);
+  font-size: 32px;
+}
+
+@media (max-width: 620px) {
+  .login-card { padding: 28px 22px; border-radius: 22px; }
+  .password-row { grid-template-columns: 1fr; }
+  .topbar { align-items: flex-start; }
+  .toolbar { align-items: stretch; flex-direction: column; }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>IBOMANSA — Cartes des membres</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <section id="login-screen" class="login-screen">
+      <div class="login-card">
+        <div class="logo-mark">🌴</div>
+        <p class="eyebrow">COOPÉRATIVE IBOMANSA COOP-CA</p>
+        <h1>Espace sécurisé des cartes</h1>
+        <p class="subtitle">Entrez le mot de passe administrateur pour accéder aux cartes des membres.</p>
+
+        <form id="login-form">
+          <label for="password">Mot de passe</label>
+          <div class="password-row">
+            <input id="password" type="password" autocomplete="current-password" required placeholder="Votre mot de passe" />
+            <button id="toggle-password" type="button" class="secondary" aria-label="Afficher le mot de passe">Afficher</button>
+          </div>
+          <button type="submit" class="primary">Accéder à la plateforme</button>
+          <p id="login-error" class="error" role="alert"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="app-screen" class="app-screen hidden">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">COOPÉRATIVE IBOMANSA COOP-CA</p>
+          <h2>Cartes des membres</h2>
+        </div>
+        <button id="logout-button" class="secondary">Déconnexion</button>
+      </header>
+
+      <section class="toolbar">
+        <input id="search-input" type="search" placeholder="Rechercher un membre, un matricule ou un village…" />
+        <span id="card-count" class="count"></span>
+      </section>
+
+      <section id="cards-grid" class="cards-grid" aria-live="polite"></section>
+      <p id="empty-state" class="empty hidden">Aucune carte ne correspond à votre recherche.</p>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Aperçu de la carte">
+    <button id="close-modal" class="modal-close" aria-label="Fermer">×</button>
+    <img id="modal-image" alt="Carte du membre en grand format" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
